@@ -1,13 +1,24 @@
 import logo from './logo.svg';
+import { useState } from 'react-redux'
 import './App.css';
+import { login, logout } from './firebase/authAction';
 
 function App() {
+  const [user, setUser] = useState(null)
+  function handleLogin () {
+    login().then((data)=> setUser(data))
+  }
+
+  function handleLogOut(){
+    setUser(null)
+    logout();
+  }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {JSON.stringify(user)}
         </p>
         <a
           className="App-link"
@@ -17,6 +28,11 @@ function App() {
         >
           Learn React
         </a>
+        
+       <button type="button" onClick={() => handleLogin()}>Login</button> 
+      
+       <button type="button" onClick={() => handleLogOut()}>LogOut</button> 
+        
       </header>
     </div>
   );
