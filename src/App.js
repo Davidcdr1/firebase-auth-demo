@@ -26,7 +26,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          firebase login
         </a>
         
        <button type="button" onClick={() => handleLogin()}>Login</button> 
